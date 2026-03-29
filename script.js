@@ -17,7 +17,7 @@ const COLOR_PALETTE = [
 
 // ============================================
 // GET HTML ELEMENTS
-// We grab the things from HTML that we want
+// grab the things from HTML that i want
 // to control using JavaScript.
 // ============================================
 
@@ -42,7 +42,7 @@ const nextDayBtn = document.getElementById("next-day-btn");
 
 // ============================================
 // APP STATE
-// These variables hold the data our app uses.
+// These variables hold the data my app uses.
 // ============================================
 
 // Load tasks from browser storage, or start empty
@@ -62,7 +62,7 @@ let selectedDate = getDateString(new Date());
 
 // ============================================
 // DATE HELPERS
-// These help us convert dates into strings and
+// These help  convert dates into strings and
 // back again.
 // ============================================
 
