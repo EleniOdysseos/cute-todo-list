@@ -1,0 +1,448 @@
+/* Remove default browser spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Whole page styling */
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: #f5ede6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Main app box */
+.widget {
+  background-color: #fffaf7;
+  border-radius: 28px;
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 470px;
+  box-shadow: 0 8px 32px rgba(180, 140, 120, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-height: 90vh; /* keeps app from growing too much */
+}
+
+/* Top row = date + progress */
+.top-row {
+  display: flex;
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* Date card */
+.date-card {
+  position: relative;
+  background-color: #8fa66a;
+  color: white;
+  border-radius: 20px;
+  padding: 16px 20px;
+  text-align: center;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  overflow: hidden;
+}
+
+/* Arrows inside date card */
+.date-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0; /* hidden until hover */
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Show arrows when hovering date card */
+.date-card:hover .date-arrow {
+  opacity: 1;
+}
+
+.date-arrow:hover {
+  background: rgba(255, 255, 255, 0.26);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.date-arrow.left {
+  left: 8px;
+}
+
+.date-arrow.right {
+  right: 8px;
+}
+
+/* Date texts */
+.day-name {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.day-number {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  margin: 4px 0;
+}
+
+.month-name {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* Progress card */
+.progress-card {
+  background-color: #fef0f0;
+  border-radius: 20px;
+  padding: 16px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.progress-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #c0837a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Progress bar background */
+.progress-bar-bg {
+  background-color: #f0ddd9;
+  border-radius: 50px;
+  height: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Progress bar fill */
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #d4937e, #e8b5a0);
+  border-radius: 50px;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #b08880;
+  font-weight: 600;
+}
+
+/* Shared row styles */
+.input-section,
+.search-section,
+.category-input-area,
+.new-category-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Inputs + select */
+.input-section input,
+.search-section input,
+.category-input-area input,
+#task-category-select {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #f0ddd9;
+  border-radius: 50px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: #6b5050;
+  background-color: #fffaf7;
+  outline: none;
+}
+
+.input-section input:focus,
+.search-section input:focus,
+.category-input-area input:focus,
+#task-category-select:focus {
+  border-color: #d4937e;
+}
+
+.input-section input::placeholder,
+.search-section input::placeholder,
+.category-input-area input::placeholder {
+  color: #c9aca8;
+}
+
+/* Main buttons */
+#add-btn,
+.soft-btn {
+  padding: 12px 18px;
+  background-color: #8fa66a;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#add-btn:hover,
+.soft-btn:hover {
+  background-color: #7a9158;
+  transform: scale(1.03);
+}
+
+#add-btn:active,
+.soft-btn:active {
+  transform: scale(0.97);
+}
+
+/* Cancel button */
+.cancel-btn {
+  background-color: #d7c8c3;
+  color: #7e6a66;
+}
+
+.cancel-btn:hover {
+  background-color: #cdbcb7;
+}
+
+/* Category pill area */
+.category-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Category pills */
+.category-pill {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background-color: #eee6df;
+  color: #8d736d;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Active pill */
+.category-pill.active {
+  color: white;
+}
+
+/* Small delete button inside category pill */
+.pill-delete {
+  border: none;
+  background: rgba(255, 255, 255, 0.28);
+  color: inherit;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* Hidden until user clicks add category */
+.category-input-area {
+  display: none;
+}
+
+/* Task list section */
+.task-list-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.tasks-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #c0837a;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 20px 10px;
+  color: #c9aca8;
+  font-size: 14px;
+}
+
+/* Actual task list */
+#task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto; /* only this section scrolls */
+  max-height: 320px;
+  padding-right: 6px;
+}
+
+/* Cute scrollbar */
+#task-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#task-list::-webkit-scrollbar-track {
+  background: #f3e8e2;
+  border-radius: 20px;
+}
+
+#task-list::-webkit-scrollbar-thumb {
+  background: #dcc1b8;
+  border-radius: 20px;
+}
+
+/* One task row */
+#task-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #e8f0da;
+  border-radius: 16px;
+  padding: 12px 14px;
+  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease,
+    margin 0.35s ease, padding 0.35s ease;
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 90px;
+}
+
+/* Delete animation */
+#task-list li.removing {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  max-height: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+/* Left side of task row */
+.task-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Right side of task row */
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Checkbox */
+#task-list li input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #8fa66a;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Small colored category dot */
+.category-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Task text */
+.task-text {
+  flex: 1;
+  font-size: 14px;
+  color: #5a6e3a;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* Completed task text */
+.task-text.done-text {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+/* Move to next day button */
+.move-btn {
+  background: transparent;
+  border: none;
+  color: #d8b4a0;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.15s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+.move-btn:hover {
+  color: #c98f95;
+  transform: translateX(2px) scale(1.05);
+}
+
+/* Delete button */
+.delete-btn {
+  background: #f4c5be;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
+  color: #c0837a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  font-weight: 700;
+}
+
+.delete-btn:hover {
+  background-color: #e8a09a;
+  color: white;
+  transform: scale(1.05);
+}
