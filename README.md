@@ -1,5 +1,7 @@
 # Cozy To-Do List Web App 🌿
 
+https://eleniodysseos.github.io/cute-todo-list/
+
 A cozy daily planner-style to-do list web app built with **HTML, CSS, and JavaScript**.  
 The app is designed with a soft pastel aesthetic and helps users organize daily tasks in a clean and simple way.
 
